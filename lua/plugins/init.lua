@@ -1,3 +1,8 @@
+local config_util = require("libs._set_config")
+local load_conf = config_util.load_conf
+local load_confs = config_util.load_confs
+
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -36,6 +41,15 @@ require("lazy").setup({
 
   -- Completion
   "hrsh7th/nvim-cmp",
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/vim-vsnip",
+
+  "hrsh7th/cmp-cmdline",
+  "hrsh7th/cmp-path",
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-nvim-lua",
+  "hrsh7th/cmp-calc",
+  "hrsh7th/cmp-emoji",
 
   -- UI
   {
@@ -46,6 +60,17 @@ require("lazy").setup({
       "rcarriga/nvim-notify",
     }
   }
+})
+
+load_confs({
+  -- LSP
+  "lspkind",
+
+  -- Completion
+  "cmp",
+
+  -- UI
+  "noice",
 })
 
 require("mason").setup()

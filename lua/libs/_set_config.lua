@@ -2,7 +2,7 @@ local M = {}
 local fmt = string.format
 
 function M.load_conf(name)
-  return require(fmt("plugins.%s", name))
+  return require(fmt("plugins.config.%s", name))
 end
 
 function M.load_confs(list)
@@ -11,7 +11,7 @@ function M.load_confs(list)
   end
   local l = {}
   for _, v in ipairs(list) do
-    table.insert(l, require(fmt("plugins.%s", v)))
+    table.insert(l, require(fmt("plugins.config.%s", v)))
   end
   return l
 end
