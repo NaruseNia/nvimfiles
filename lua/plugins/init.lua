@@ -2,15 +2,12 @@ local config_util = require("libs._set_config")
 local load_conf = config_util.load_conf
 local load_confs = config_util.load_confs
 
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
     "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
     lazypath,
   })
 end
@@ -51,6 +48,13 @@ require("lazy").setup({
   "hrsh7th/cmp-calc",
   "hrsh7th/cmp-emoji",
 
+  -- Treesitter
+  {
+    "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter/nvim-treesitter-context",
+    build = ":TSUpdate"
+  },
+
   -- UI
   {
     "folke/noice.nvim",
@@ -59,18 +63,27 @@ require("lazy").setup({
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     }
-  }
+  },
+  {
+    "nvim-tree/nvim-tree.lua",
+    "echasnovski/mini.base16",
+    "antosha417/nvim-lsp-file-operations"
+  },
+  "nvim-lualine/lualine.nvim"
 })
 
 load_confs({
   -- LSP
   "lspkind",
+  "mason-lspconfig",
 
   -- Completion
   "cmp",
 
   -- UI
   "noice",
+  "lualine",
+  "nvim-tree"
 })
 
 require("mason").setup()

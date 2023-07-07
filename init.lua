@@ -1,6 +1,7 @@
 local TAB_WIDTH = 2
 
 require("plugins.init")
+require("key_maps.init")
 
 vim.opt.expandtab = true
 vim.opt.smarttab = true
@@ -17,4 +18,3 @@ vim.opt.relativenumber = true
 
 vim.g.rasmus_italic_comments = false
 vim.cmd "colorscheme rasmus"
-
