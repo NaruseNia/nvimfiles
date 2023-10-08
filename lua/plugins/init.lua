@@ -69,7 +69,13 @@ require("lazy").setup({
     "echasnovski/mini.base16",
     "antosha417/nvim-lsp-file-operations"
   },
-  "nvim-lualine/lualine.nvim"
+  "nvim-lualine/lualine.nvim",
+
+  -- Utils
+  {
+    'numToStr/Comment.nvim',
+    lazy = false,
+  }
 })
 
 load_confs({
